@@ -7598,7 +7598,7 @@ GameObject:
   - component: {fileID: 4737731231843253598}
   - component: {fileID: 3086793335009889377}
   m_Layer: 0
-  m_Name: Merchant
+  m_Name: Bob Merchant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
