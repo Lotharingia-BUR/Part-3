@@ -59,14 +59,4 @@ public class Pick : MonoBehaviour
         }
         yield return null;
     }
-
-    /*    private void OnMouseDown()
-        {
-            isClicked = true;
-        }
-
-        private void OnMouseUp()
-        {
-            isClicked = false;
-        }*/
 }

@@ -16,8 +16,8 @@ public class SeratedPin : Pin
 
     public override void Fall()
     {
-        base.Fall();
         seratedEdge();
+        base.Fall();
     }
 
     private void seratedEdge()
