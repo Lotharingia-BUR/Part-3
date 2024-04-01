@@ -12,7 +12,6 @@ public class SecurityPin : Pin
         {
             foreach (var i in barrels)
             {
-                Debug.Log(i.name);
                 i.SendMessage("Fall");
             }
         }

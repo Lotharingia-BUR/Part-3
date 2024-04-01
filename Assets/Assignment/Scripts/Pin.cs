@@ -36,7 +36,6 @@ public class Pin : MonoBehaviour
 
     virtual public void Fall()
     {
-        Debug.Log(ID);
         StartCoroutine(Release());
     }
 
