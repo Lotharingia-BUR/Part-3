@@ -6,7 +6,7 @@ public class Pin : MonoBehaviour
 {
     public int ID = 0;
     public Collider2D collision;
-    public static float height = 1.5f;
+    public static float height = 1.4f;
 
     private void Start()
     {

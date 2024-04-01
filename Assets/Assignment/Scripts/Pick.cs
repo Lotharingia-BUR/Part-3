@@ -46,7 +46,7 @@ public class Pick : MonoBehaviour
     {
         while(transform.rotation.z <= 0.085f)
         {
-            transform.Rotate(new Vector3(0, 0, 0.15f));
+            transform.Rotate(new Vector3(0, 0, 0.1f));
         }
         yield return null;
     }
@@ -55,7 +55,7 @@ public class Pick : MonoBehaviour
     {
         while (transform.rotation.z >= 0f)
         {
-            transform.Rotate(new Vector3(0, 0, -0.15f));
+            transform.Rotate(new Vector3(0, 0, -0.1f));
         }
         yield return null;
     }
