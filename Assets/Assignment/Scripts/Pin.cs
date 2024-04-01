@@ -6,7 +6,7 @@ public class Pin : MonoBehaviour
 {
     public int ID = 0;
     public Collider2D collision;
-    static float height = 1.5f;
+    public static float height = 1.5f;
 
     private void Start()
     {
@@ -34,7 +34,13 @@ public class Pin : MonoBehaviour
         }
     }
 
-    IEnumerator Release()
+    virtual public void Fall()
+    {
+        Debug.Log(ID);
+        StartCoroutine(Release());
+    }
+
+    public IEnumerator Release()
     {
         collision.enabled = false;
         yield return new WaitForSeconds(1.2f);

@@ -8,9 +8,13 @@ public class SecurityPin : Pin
 
     public override void OnTop(Collision2D collision)
     {
-        for (int i = 0; i < barrels.Capacity; i++)
+        if (collision.transform.position.y > height + collision.transform.localScale.y)
         {
-            /*Debug.Log(i);*/
+            foreach (var i in barrels)
+            {
+                Debug.Log(i.name);
+                i.SendMessage("Fall");
+            }
         }
     }
 }
