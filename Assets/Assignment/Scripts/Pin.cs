@@ -17,21 +17,30 @@ public class Pin : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            collision.enabled = false;
-        } else if ((Input.GetMouseButtonUp(1)))
-        {
-            collision.enabled = true;
-            
+            StartCoroutine(Release());
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.transform.position.y > height + collision.transform.localScale.y/2)
+        OnTop(collision);
+    }
+
+    virtual public void OnTop(Collision2D collision)
+    {
+        if (collision.transform.position.y > height + collision.transform.localScale.y)
         {
+            Debug.Log(collision.transform.position.y + " " + collision.gameObject.name);
             playSound(ID);
         }
     }
 
+    IEnumerator Release()
+    {
+        collision.enabled = false;
+        yield return new WaitForSeconds(1.2f);
+        collision.enabled = true;
+        yield return null;
+    }
     private static void playSound(int ID)
     {
         Debug.Log(ID);
