@@ -27,7 +27,6 @@ public class Pick : MonoBehaviour
             StartCoroutine(ResetPick());
         }
 
-        Debug.Log(newPos.x);
         if (newPos.x > 4.5f)
         {
             rb.MovePosition(new Vector2(-4.5f, -2)); 
@@ -47,7 +46,7 @@ public class Pick : MonoBehaviour
     {
         while(transform.rotation.z <= 0.085f)
         {
-            transform.Rotate(new Vector3(0, 0, 0.1f));
+            transform.Rotate(new Vector3(0, 0, 0.15f));
         }
         yield return null;
     }
@@ -56,7 +55,7 @@ public class Pick : MonoBehaviour
     {
         while (transform.rotation.z >= 0f)
         {
-            transform.Rotate(new Vector3(0, 0, -0.1f));
+            transform.Rotate(new Vector3(0, 0, -0.15f));
         }
         yield return null;
     }
