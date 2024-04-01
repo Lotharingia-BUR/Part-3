@@ -26,7 +26,21 @@ public class Pick : MonoBehaviour
             StopCoroutine(Picking());
             StartCoroutine(ResetPick());
         }
-        rb.MovePosition(newPos * Vector2.right + new Vector2(-9, -2));
+
+        Debug.Log(newPos.x);
+        if (newPos.x > 4.5f)
+        {
+            rb.MovePosition(new Vector2(-4.5f, -2)); 
+        } else if (newPos.x < -4.5f)
+        {
+            rb.MovePosition(new Vector2(-13.5f, -2));
+        } 
+        else
+        {
+            rb.MovePosition(newPos * Vector2.right + new Vector2(-9, -2));
+        }
+
+        
     }
 
     IEnumerator Picking()
