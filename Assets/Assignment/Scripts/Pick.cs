@@ -26,13 +26,12 @@ public class Pick : MonoBehaviour
             StopCoroutine(Picking());
             StartCoroutine(ResetPick());
         }
-        rb.MovePosition(newPos * Vector2.right + new Vector2(-8, -2));
+        rb.MovePosition(newPos * Vector2.right + new Vector2(-9, -2));
     }
 
     IEnumerator Picking()
     {
-        Debug.Log("Picking");
-        while(transform.rotation.z <= 0.09)
+        while(transform.rotation.z <= 0.085f)
         {
             transform.Rotate(new Vector3(0, 0, 0.1f));
         }
@@ -41,8 +40,7 @@ public class Pick : MonoBehaviour
 
     IEnumerator ResetPick()
     {
-        Debug.Log("Resetting");
-        while (transform.rotation.z >= 0)
+        while (transform.rotation.z >= 0f)
         {
             transform.Rotate(new Vector3(0, 0, -0.1f));
         }
