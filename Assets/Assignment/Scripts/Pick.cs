@@ -5,6 +5,7 @@ using UnityEngine;
 public class Pick : MonoBehaviour
 {
     Rigidbody2D rb;
+    Vector2 newPos;
     bool isClicked;
 
     private void Start()
@@ -14,23 +15,59 @@ public class Pick : MonoBehaviour
 
     private void Update()
     {
-        if (isClicked)
+        newPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //offset by 8 and lock to x axis
+        rb.MovePosition(newPos * Vector2.right + new Vector2 (-8, -2));
+        if (Input.GetMouseButton(0)) 
         {
-            transform.Translate(Vector3.up * 1 * Time.deltaTime);
-        }
-        else if(!isClicked && transform.position.y >= -2)
+            StopCoroutine(ResetPick());
+            StartCoroutine(Picking());
+
+        } else
         {
-            transform.Translate(Vector3.down * 1 * Time.deltaTime);
+            StopCoroutine(Picking());
+            StartCoroutine(ResetPick());
         }
+        /*Debug.Log(transform.rotation.z);
+        if (Input.GetMouseButton(0) && transform.rotation.z <= 0.1)
+        {
+            transform.Rotate(new Vector3(0, 0, 0.1f));
+        }
+        else if(transform.rotation.z >= 0)
+        {
+            
+            transform.Rotate(new Vector3(0, 0, -0.1f));
+        }*/
     }
 
-    private void OnMouseDown()
+    IEnumerator Picking()
     {
-        isClicked = true;
+        Debug.Log("Picking");
+        while(transform.rotation.z <= 0.1)
+        {
+            transform.Rotate(new Vector3(0, 0, 0.1f));
+        }
+        StartCoroutine(ResetPick());
+        yield return null;
     }
 
-    private void OnMouseUp()
+    IEnumerator ResetPick()
     {
-        isClicked = false;
+        Debug.Log("Resetting");
+        while (transform.rotation.z >= 0)
+        {
+            transform.Rotate(new Vector3(0, 0, -0.1f));
+        }
+        yield return null;
     }
+
+    /*    private void OnMouseDown()
+        {
+            isClicked = true;
+        }
+
+        private void OnMouseUp()
+        {
+            isClicked = false;
+        }*/
 }
