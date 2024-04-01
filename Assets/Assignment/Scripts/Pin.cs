@@ -17,7 +17,7 @@ public class Pin : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            StartCoroutine(Release());
+            Fall();
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
